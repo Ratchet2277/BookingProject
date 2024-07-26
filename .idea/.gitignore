@@ -1,0 +1,15 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+
+#Source node
+node_modules/
+
+#Compiled SCSS
+*.css
+*.map
+
+#Lock/version file
+package-lock.json
