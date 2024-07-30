@@ -1,2 +1,6 @@
-@use "../../node_modules/bootstrap/scss/bootstrap";
+$node_module: "../../node_modules";
 
+@use "../../node_modules/bootstrap/scss/bootstrap";
+@use "../../node_modules/bootstrap-icons/font/bootstrap-icons" with (
+  $bootstrap-icons-font-dir: "#{$node_module}/bootstrap-icons/font/fonts"
+);
