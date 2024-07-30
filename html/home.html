@@ -5,10 +5,220 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <link rel="stylesheet" href="../public/css/style.css">
     <title>Book your travel!</title>
 </head>
 <body>
+<main class="container-fluid">
+    <header>
+        <div class="row">
+            <div class="col-5 logo">
+                <a href="home.html" class="navbar-brand">
+                    <img src="https://dummyimage.com/50x50/000/fff" alt="Your band logo!">
+                    Book your travel!
+                </a>
+            </div>
+            <div class="col-3">
+                <div class="row">
+                    <div class="col-4">
+                        <svg class="bi" fill="currentColor" height="100%">
+                            <use xlink:href="../node_modules/bootstrap-icons/bootstrap-icons.svg#telephone-fill"></use>
+                        </svg>
+                    </div>
+                    <div class="col-8">
+                        <p>
+                            24/7 Support number
+                        </p>
+                        <p>
+                            1-555-555-555
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search entire site here"
+                           aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <span class="input-group-text" id="basic-addon2">
+                        <i class="bi-search"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#mainNavbar" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainNavbar">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a href="hotel.html" class="nav-link">Hotels </a></li>
+                            <li class="nav-item"><a href="flights.html" class="nav-link">Flight </a></li>
+                            <li class="nav-item"><a href="combo.html" class="nav-link">Flight + Hotel</a></li>
+                            <li class="nav-item"><a href="catering.html" class="nav-link">Self Catering</a></li>
+                            <li class="nav-item"><a href="cruise.html" class="nav-link">Cruise</a></li>
+                            <li class="nav-item"><a href="car.html" class="nav-link">Car Rental</a></li>
+                            <li class="nav-item"><a href="location.html" class="nav-link">Location</a></li>
+                            <li class="nav-item"><a href="deals.html" class="nav-link">Deal</a></li>
+                            <li class="nav-item"><a href="pages.html" class="nav-link">Pages</a></li>
+                            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                            <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                            <li class="nav-item"><a href="purchase.html" class="nav-link">Purchase</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section class="row bg-body-secondary search">
+        <div id="mainCarousel" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://dummyimage.com/2000x1000/000/fff" alt="Carousel image 1"
+                         class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://dummyimage.com/2000x1000/000/fff" alt="Carousel image 2"
+                         class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://dummyimage.com/2000x1000/000/fff" alt="Carousel image 3"
+                         class="d-block w-100">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <form action="" class="row">
+            <div class="col-3">
+                <h2><em>01</em> What?</h2>
+                <div class="row">
+                    <div class="form-check col-6">
+                        <input type="radio" name="what" id="what-hotel" class="form-check-input" value="hotel">
+                        <label for="what-hotel" class="form-check-label">Hotel</label>
+                    </div>
+                    <div class="form-check col-6">
+                        <input type="radio" name="what" id="what-catering" class="form-check-input" value="catering">
+                        <label for="what-catering" class="form-check-label">Self Catering</label>
+                    </div>
+                    <div class="form-check col-6">
+                        <input type="radio" name="what" id="what-flight" class="form-check-input" value="flight">
+                        <label for="what-flight" class="form-check-label">Flight</label>
+                    </div>
+                    <div class="form-check col-6">
+                        <input type="radio" name="what" id="what-cruise" class="form-check-input" value="cruise">
+                        <label for="what-cruise" class="form-check-label">Cruise</label>
+                    </div>
+                    <div class="form-check col-6">
+                        <input type="radio" name="what" id="what-combo" class="form-check-input" value="combo">
+                        <label for="what-combo" class="form-check-label">Flight + Hotel</label>
+                    </div>
+                    <div class="form-check col-6">
+                        <input type="radio" name="what" id="what-car" class="form-check-input" value="car">
+                        <label for="what-car" class="form-check-label">Rent a car</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2><em>02</em> Where?</h2>
+                <div class="mb-3">
+                    <label for="where" class="form-label">Your destination</label>
+                    <input type="text" class="form-control" id="where"
+                           placeholder="City, region, district or specific hotel">
+                </div>
+            </div>
+            <div class="col-3">
+                <h2><em>03</em> When?</h2>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="check-in" class="form-label">Check-in date</label>
+                            <input type="date" class="form-control" id="check-in">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="check-out" class="form-label">Check-in date</label>
+                            <input type="date" class="form-control" id="check-out">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2><em>04</em> Who?</h2>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="room" class="form-label">Rooms</label>
+                            <input type="number" class="form-control" id="room">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="adults" class="form-label">Adults</label>
+                            <input type="number" class="form-control" id="adults">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="children" class="form-label">Children</label>
+                            <input type="number" class="form-control" id="children">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 offset-4 text-center">
+                <button type="submit" class="btn btn-primary me-auto">Proceed to results</button>
+            </div>
+        </form>
+    </section>
+    <section id="latest" class="row bg-body-secondary">
+        <h2>Explore our latest offers</h2>
+        <div class="card col-3">
+            <img src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, rem!</p>
+                <a href="" class="btn btn-primary">Explore our deals</a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, rem!</p>
+                <a href="" class="btn btn-primary">Explore our deals</a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, rem!</p>
+                <a href="" class="btn btn-primary">Explore our deals</a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img src="https://dummyimage.com/300x300/000/fff" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, rem!</p>
+                <a href="" class="btn btn-primary">Explore our deals</a>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
