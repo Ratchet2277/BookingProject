@@ -1,6 +1,18 @@
+//import lib Bootstrap
 $node_module: "../../node_modules";
+$bootstrap-icons-font-dir: "#{$node_module}/bootstrap-icons/font/fonts";
 
-@use "../../node_modules/bootstrap/scss/bootstrap";
-@use "../../node_modules/bootstrap-icons/font/bootstrap-icons" with (
-  $bootstrap-icons-font-dir: "#{$node_module}/bootstrap-icons/font/fonts"
-);
+$body-bg: #fff;
+$body-secondary-bg: #e9e6df;
+$body-tertiary-bg: #bbaca5;
+$menu-color: #bfb2a9;
+$primary: #4eb8b4;
+$primary-text-emphasis: #e9feff;
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons";
+
+@import "search";
+@import "header";
+@import "root";

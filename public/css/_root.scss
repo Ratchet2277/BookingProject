@@ -1,0 +1,9 @@
+.btn-primary {
+  @include button-variant($primary, $primary, $primary-text-emphasis, $hover-color: $primary-text-emphasis);
+}
+
+//import lib générique
+
+em {
+  color: $primary;
+}
