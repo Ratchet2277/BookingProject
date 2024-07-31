@@ -2,6 +2,8 @@ import './../public/css/style.scss';
 import Header from "@/app/components/Header/header";
 import MainCarousel from "@/app/components/mainCarousel";
 import SearchForm from "@/app/components/Search/Search";
+import {Destination, Offer} from "@/app/components/Card/Cards";
+import {Row} from "react-bootstrap";
 
 let imagesCarousel: ImageMetadata[] = [
     {src: "https://dummyimage.com/2000x1000/000/fff", alt: "DummyImage"},
@@ -9,53 +11,94 @@ let imagesCarousel: ImageMetadata[] = [
     {src: "https://dummyimage.com/2000x1000/000/fff", alt: "DummyImage"}
 ]
 
+//create offers data
+let offers: Offer[] = []
+
+for (const i in Array.from(new Array(4), (i) => i)) {
+    let offer = {
+        id: i,
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, rem!",
+        linkText: "Explore our deals",
+        image: {
+            src: "https://dummyimage.com/300x300/000/fff",
+            alt: "DummyImage"
+        }
+    }
+    offers.push(offer);
+}
+
+
+//create destinations data
+let destinations: City[] = []
+for (const cityIndex in Array.from(new Array(15), (i) => i)) {
+    let destination: City = {
+        id: cityIndex,
+        name: "Lorem City",
+        image: {
+            src: "https://dummyimage.com/300x300/000/fff",
+            alt: "DummyImage"
+        },
+        hotels: [],
+        flights: [],
+        discount: Math.random() > .95 ? .2 : null
+
+    }
+
+    for (const hotelIndex in Array.from(new Array(10), (i) => i)) {
+        const hotel: Hotel = {
+            id: hotelIndex,
+            name: "Lorem Hotel",
+            image: {
+                src: "https://dummyimage.com/300x300/000/fff",
+                alt: "DummyImage"
+            },
+            lowestPrice: Math.round(Math.random() * 10e7) / 100,
+            currency: "$"
+        }
+        destination.hotels?.push(hotel);
+    }
+
+    for (const flightIndex in Array.from(new Array(5), (i) => i)) {
+        const flight: Flight = {
+            id: flightIndex,
+            currency: "$",
+            price: Math.round(Math.random() * 10e5) / 100,
+            departure: {
+                date: new Date(),
+            },
+            arrival: {
+                date: new Date(),
+                city: destination
+            }
+        }
+        destination.flights?.push(flight)
+
+    }
+    destinations.push(destination);
+}
+
+
+
 export default function Page() {
     return (
         <main>
             <Header></Header>
-            <section className="row bg-body-secondary search">
+            <Row as={"section"} className="bg-body-secondary search">
                 <MainCarousel images={imagesCarousel}/>
                 <SearchForm action={""}/>
-            </section>
-            <section id="latest" className="row bg-body-secondary">
+            </Row>
+            <Row as={"section"} className="bg-body-secondary offers">
                 <h2>Explore our latest offers</h2>
-                <div className="card col-3">
-                    <img src="https://dummyimage.com/300x300/000/fff" className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-                            rem!</p>
-                        <a href="" className="btn btn-primary">Explore our deals</a>
-                    </div>
-                </div>
-                <div className="card col-3">
-                    <img src="https://dummyimage.com/300x300/000/fff" className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-                            rem!</p>
-                        <a href="" className="btn btn-primary">Explore our deals</a>
-                    </div>
-                </div>
-                <div className="card col-3">
-                    <img src="https://dummyimage.com/300x300/000/fff" className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-                            rem!</p>
-                        <a href="" className="btn btn-primary">Explore our deals</a>
-                    </div>
-                </div>
-                <div className="card col-3">
-                    <img src="https://dummyimage.com/300x300/000/fff" className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-                            rem!</p>
-                        <a href="" className="btn btn-primary">Explore our deals</a>
-                    </div>
-                </div>
-            </section>
+                {offers.map(offer => (
+                    <Offer offer={offer} key={`offer_${offer.id}`}/>
+                ))}
+            </Row>
+            <Row as={"section"} className="bg-body-secondary destinations">
+                <h2>Top destinations around the world</h2>
+                {destinations.map(destination => (
+                    <Destination city={destination} key={`destination_${destination.id}`}/>
+                ))}
+            </Row>
         </main>
     );
 }
