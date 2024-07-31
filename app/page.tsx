@@ -3,7 +3,7 @@ import Header from "@/app/components/Header/header";
 import MainCarousel from "@/app/components/mainCarousel";
 import SearchForm from "@/app/components/Search/Search";
 
-let imagesCarousel: Image[] = [
+let imagesCarousel: ImageMetadata[] = [
   {src: "https://dummyimage.com/2000x1000/000/fff", alt: "DummyImage"},
   {src: "https://dummyimage.com/2000x1000/000/fff", alt: "DummyImage"},
   {src: "https://dummyimage.com/2000x1000/000/fff", alt: "DummyImage"}

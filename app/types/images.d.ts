@@ -1,4 +1,4 @@
-interface Image {
+interface ImageMetadata {
     src: string;
     alt: string;
 }
