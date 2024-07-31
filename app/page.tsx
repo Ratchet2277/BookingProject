@@ -30,7 +30,7 @@ for (const i in Array.from(new Array(4), (i) => i)) {
 
 //create destinations data
 let destinations: City[] = []
-for (const cityIndex in Array.from(new Array(15), (i) => i)) {
+for (const cityIndex in Array.from(new Array(16), (i) => i)) {
     let destination: City = {
         id: cityIndex,
         name: "Lorem City",
@@ -44,7 +44,9 @@ for (const cityIndex in Array.from(new Array(15), (i) => i)) {
 
     }
 
-    for (const hotelIndex in Array.from(new Array(10), (i) => i)) {
+    const nbHotels = Math.ceil(Math.random() * 10);
+
+    for (const hotelIndex in Array.from(new Array(nbHotels), (i) => i)) {
         const hotel: Hotel = {
             id: hotelIndex,
             name: "Lorem Hotel",
