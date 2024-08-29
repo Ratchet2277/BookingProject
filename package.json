@@ -5,11 +5,16 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "dependencies": {
+    "@prisma/adapter-pg": "^5.19.0",
     "@prisma/client": "^5.19.0",
     "bootstrap": "^5.3.3",
     "next": "14.2.5",
     "normalize-css": "^2.3.1",
+    "pg": "^8.12.0",
     "prisma": "^5.19.0",
     "react": "^18",
     "react-bootstrap": "^2.10.4",
@@ -19,11 +24,12 @@
     "sass": "^1.77.8"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.16.2",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
-    "typescript": "^5"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   }
 }
