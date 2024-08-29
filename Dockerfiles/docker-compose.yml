@@ -1,15 +1,14 @@
 name: formation-node
 services:
 
-  mongo:
-    image: mongo
+  postgres:
+    image: postgres
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
+      PGDATA: /var/lib/postgresql/data
     ports:
-      - '127.0.0.1:27017:27017'
+      - '127.0.0.1:5432:5432'
     volumes:
-      - mongo-data:/data/db
+      - postgres-data:/var/lib/postgresql/data
 
 volumes:
-  mongo-data:
+  postgres-data:
