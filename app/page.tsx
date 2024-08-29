@@ -1,8 +1,8 @@
 import './../public/css/style.scss';
-import Header from "@/app/components/Header/header";
-import MainCarousel from "@/app/components/mainCarousel";
-import SearchForm from "@/app/components/Search/Search";
-import {Destination, Offer} from "@/app/components/Card/Cards";
+import Header from "@/components/Header/header";
+import MainCarousel from "@/components/mainCarousel";
+import SearchForm from "@/components/Search/Search";
+import {Destination, Offer} from "@/components/Card/Cards";
 import {Row} from "react-bootstrap";
 
 let imagesCarousel: ImageMetadata[] = [
@@ -28,7 +28,7 @@ for (const i in Array.from(new Array(4), (i) => i)) {
 }
 
 
-//create destinations data
+//create destinations dummy data
 let destinations: City[] = []
 for (const cityIndex in Array.from(new Array(16), (i) => i)) {
     let destination: City = {
