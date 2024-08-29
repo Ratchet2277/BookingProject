@@ -1,4 +1,4 @@
-import MainNavbar from "@/app/components/Header/navbar";
+import MainNavbar from "@/components/Header/navbar";
 import {Col, FormControl, Image, InputGroup, NavbarBrand, Row} from "react-bootstrap";
 import InputGroupText from "react-bootstrap/InputGroupText";
 import {BsSearch, BsTelephoneFill} from "react-icons/bs";

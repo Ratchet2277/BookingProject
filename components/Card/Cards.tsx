@@ -1,8 +1,15 @@
 import {Button, Card, CardBody, CardImg, CardTitle, Col, Row} from "react-bootstrap";
 import {BsBuilding} from "react-icons/bs";
 import {FaPlaneDeparture} from "react-icons/fa";
+import {PrismaClient} from "@prisma/client";
 
-export function Offer({offer}: { offer: Offer }) {
+const prisma = new PrismaClient()
+
+export async function Offer({offerId}: { offerId: number }) {
+    const offer = await prisma.offer.findFirst({where: {id: offerId}, include: {image: true}});
+    if (!offer) {
+        return;
+    }
     return (
         <Card className="col-3">
             <CardImg src={offer.image.src} variant="top" alt={offer.image.alt || offer.description}/>
@@ -14,7 +21,15 @@ export function Offer({offer}: { offer: Offer }) {
     )
 }
 
-export function Destination({city}: { city: City }) {
+export async function Destination({cityId}: { cityId: number }) {
+    const city = await prisma.city.findFirst({
+        where: {id: cityId},
+        include: {image: true, hotels: true, arrivalFlight: true}
+    });
+    if (!city) {
+        console.log(`City with id ${cityId} not found`);
+        return;
+    }
     const nbHotel = city.hotels?.length || 0
     const currency = "$";
     let minHotelPrice = 0;
@@ -23,14 +38,14 @@ export function Destination({city}: { city: City }) {
         minHotelPrice = Math.min(...city.hotels.map(hotel => hotel.lowestPrice));
     }
     let minFlightPrice = 0;
-    if (city.flights) {
-        minFlightPrice = Math.min(...city.flights.map(flight => flight.price));
+    if (city.arrivalFlight) {
+        minFlightPrice = Math.min(...city.arrivalFlight.map(flight => flight.price));
     }
 
     const isDiscount = Boolean(city.discount)
     return (
         <Card className={"col-3" + (isDiscount ? " discounted" : "")}>
-            <CardImg src={city.image.src} variant="top" alt={city.image.alt || city.name}/>
+            <CardImg src={city.image?.src} variant="top" alt={city.image?.alt || city.name}/>
             <CardBody>
                 <CardTitle>{city.name}</CardTitle>
                 <CardBody>
