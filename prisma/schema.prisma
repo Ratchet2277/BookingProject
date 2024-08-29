@@ -9,6 +9,58 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Image {
+  id    Int    @id @default(autoincrement())
+  src   String
+  alt   String
+  City  City?
+  Hotel Hotel?
+  Offer Offer?
+}
+
+model City {
+  id              Int      @id @default(autoincrement())
+  name            String
+  image           Image?   @relation(references: [id], fields: [imageId], onDelete: Cascade, onUpdate: Cascade)
+  hotels          Hotel[]
+  discount        Float
+  imageId         Int      @unique
+  departureFlight Flight[] @relation("departureCity")
+  arrivalFlight   Flight[] @relation("arrivalCity")
+}
+
+model Hotel {
+  id          Int    @id @default(autoincrement())
+  name        String
+  image       Image? @relation(references: [id], fields: [imageId], onDelete: Cascade, onUpdate: Cascade)
+  lowestPrice Float
+  currency    String
+  city        City   @relation(references: [id], fields: [cityId], onDelete: Cascade, onUpdate: Cascade)
+  imageId     Int?   @unique
+  cityId      Int
+}
+
+model Flight {
+  id              Int      @id @default(autoincrement())
+  departureDate   DateTime
+  departureCity   City     @relation("departureCity", references: [id], fields: [departureCityId], onDelete: Cascade, onUpdate: Cascade)
+  arrivalDate     DateTime
+  arrivalCity     City     @relation("arrivalCity", references: [id], fields: [arrivalCityId], onDelete: Cascade, onUpdate: Cascade)
+  price           Float
+  currency        String
+  departureCityId Int
+  arrivalCityId   Int
+}
+
+model Offer {
+  id          Int    @id @default(autoincrement())
+  image       Image  @relation(fields: [imageId], references: [id], map: "imageId", onDelete: Cascade, onUpdate: Cascade)
+  description String
+  linkText    String
+  discount    Float?
+  imageId     Int    @unique
 }
