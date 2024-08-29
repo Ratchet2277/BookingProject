@@ -1,5 +1,4 @@
-import {City, PrismaClient} from '@prisma/client'
-
+import {City, Currencies, PrismaClient} from '@prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -26,6 +25,7 @@ async function offers(number: number) {
                 description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, rem!",
                 linkText: "Explore our deals",
                 imageId: offerImage.id,
+                discount: Math.random() > .95 ? .2 : 0
             }
         })
         promises.push(offer)
@@ -81,7 +81,7 @@ async function hotels(number: number, city: City) {
                 name: "Lorem Hotel",
                 imageId: hotelImage.id,
                 lowestPrice: Math.round(Math.random() * 10e7) / 100,
-                currency: "$",
+                currency: Currencies.USD,
                 cityId: city.id
             }
         })
@@ -105,7 +105,7 @@ async function flights(number: number, arrival: City) {
             },
             create: {
                 id: flightId,
-                currency: "$",
+                currency: Currencies.USD,
                 price: Math.round(Math.random() * 10e5) / 100,
                 departureDate: new Date(),
                 arrivalDate: new Date(),

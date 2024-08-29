@@ -8,6 +8,13 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum Currencies {
+  EUR
+  USD
+  CAD
+  AUD
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -34,24 +41,24 @@ model City {
 }
 
 model Hotel {
-  id          Int    @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   name        String
-  image       Image? @relation(references: [id], fields: [imageId], onDelete: Cascade, onUpdate: Cascade)
-  lowestPrice Float
-  currency    String
-  city        City   @relation(references: [id], fields: [cityId], onDelete: Cascade, onUpdate: Cascade)
-  imageId     Int?   @unique
+  image       Image?     @relation(references: [id], fields: [imageId], onDelete: Cascade, onUpdate: Cascade)
+  lowestPrice Float      @default(0)
+  currency    Currencies
+  city        City       @relation(references: [id], fields: [cityId], onDelete: Cascade, onUpdate: Cascade)
+  imageId     Int?       @unique
   cityId      Int
 }
 
 model Flight {
-  id              Int      @id @default(autoincrement())
+  id            Int       @id @default(autoincrement())
   departureDate   DateTime
-  departureCity   City     @relation("departureCity", references: [id], fields: [departureCityId], onDelete: Cascade, onUpdate: Cascade)
+  departureCity City      @relation("departureCity", references: [id], fields: [departureCityId], onDelete: Cascade, onUpdate: Cascade)
   arrivalDate     DateTime
-  arrivalCity     City     @relation("arrivalCity", references: [id], fields: [arrivalCityId], onDelete: Cascade, onUpdate: Cascade)
-  price           Float
-  currency        String
+  arrivalCity   City      @relation("arrivalCity", references: [id], fields: [arrivalCityId], onDelete: Cascade, onUpdate: Cascade)
+  price         Float     @default(0)
+  currency      Currencies
   departureCityId Int
   arrivalCityId   Int
 }
@@ -61,6 +68,15 @@ model Offer {
   image       Image  @relation(fields: [imageId], references: [id], map: "imageId", onDelete: Cascade, onUpdate: Cascade)
   description String
   linkText    String
-  discount    Float?
+  discount Float @default(0)
   imageId     Int    @unique
+}
+
+model CurrencyConversion {
+  id             Int        @id @default(autoincrement())
+  originCurrency Currencies
+  targetCurrency Currencies
+  ratio          Float      @default(1)
+
+  @@unique([originCurrency, targetCurrency])
 }
