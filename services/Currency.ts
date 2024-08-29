@@ -8,6 +8,9 @@ export default async function convert(price: number, originCurrency: Currencies,
 }
 
 async function getRatio(originCurrency: Currencies, targetCurrency: Currencies): Promise<number> {
+    if (originCurrency == targetCurrency) {
+        return 1;
+    }
     let conversion = await prisma.currencyConversion.findFirst({
         where: {
             originCurrency: originCurrency,
