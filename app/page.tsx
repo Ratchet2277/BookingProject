@@ -15,8 +15,8 @@ let imagesCarousel: Image[] = [
 const prisma = new PrismaClient()
 
 export default async function Page() {
-    const offers = await prisma.offer.findMany({select: {id: true}})
-    const destinations = await prisma.city.findMany({select: {id: true}})
+    const offers = await prisma.offer.findMany({select: {id: true}, take: 4})
+    const destinations = await prisma.city.findMany({select: {id: true}, take: 12})
 
     return (
         <main>
