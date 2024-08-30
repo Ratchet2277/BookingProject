@@ -8,10 +8,13 @@ export const metadata = {
 }
 
 export default function RootLayout({children,}: { children: React.ReactNode }) {
+
     return (
         <html lang="fr">
         <body className="container-fluid">
+        <Header/>
         {children}
+        <Footer/>
         </body>
         </html>
     )

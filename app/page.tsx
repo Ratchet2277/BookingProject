@@ -1,5 +1,4 @@
 import './../public/css/style.scss';
-import Header from "@/components/Header/header";
 import MainCarousel from "@/components/mainCarousel";
 import SearchForm from "@/components/Search/Search";
 import {Destination, Offer} from "@/components/Card/Cards";
@@ -20,7 +19,6 @@ export default async function Page() {
 
     return (
         <main>
-            <Header></Header>
             <Row as={"section"} className="bg-body-secondary search">
                 <MainCarousel images={imagesCarousel}/>
                 <SearchForm action={""}/>
